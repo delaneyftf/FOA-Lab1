@@ -7,6 +7,8 @@ std::string ParsedBubbleSort(std::string namelist)
     int substrcnt = 0; // Tracks the number of places to include for the substr function.
     int arrayindex = 0; // Tracks which place in the array the substr words go into.
     std::string temp; // Temporary storage for string swaps within an array.
+    int x = 1;
+    int comparisons = 0;
     
     /* Counts the number of spaces in the string to determine the size of the array to initialize. */
     for(int i=1; i<namelist.length(); i++) 
@@ -41,17 +43,19 @@ std::string ParsedBubbleSort(std::string namelist)
     
     
     /* Implements bubblesort on string arrays */
-    for(int i = 1; i<=length-1; i++)
+    for(int i = 1; i<=length-1; i++) // Performs n-1 passes where n is the length of the Array.         
     {
-        for(int j=1; j<=length-1;j++)
+        for(int j = 1; j<=length-x;j++) // Performs n-1 passes where n is the length of the Array.
         {
-            if(array[j]<array[j-1])
+            if(array[j]<array[j-1]) // Checks for out of order elements.
             {
-                temp = array[j];
+                temp = array[j]; // Temporary storage to implement swapping.
                 array[j]=array[j-1];
-                array[j-1]=temp;
+                array[j-1]=temp;    
             }
-        }    
+            comparisons++;  // Tracks comparisons
+        }   
+        x++;
     }
     
     
